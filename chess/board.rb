@@ -16,7 +16,7 @@ class Board
         end
         return @rows
     end
-    
+
     def initialize
         @rows = self.class.populate_grid
      
@@ -32,9 +32,20 @@ class Board
         @rows[row][col] = val
     end
 
-    def move_piece(color, start_pos, end_pos)
-        if rows[start_pos] == "__" #remember to update empty space with nullpiece 
-            raise ArgumentError.new("Starting position is not available") 
+    def move_piece(color = nil, start_pos, end_pos)
+        # if start_pos.any? {|int| int>7 || int<0}
+        #     raise ArgumentError.new("Array index out of bounds")
+        # end
+        # if end_pos[0]>7 || end_pos[1]<0
+        #     raise ArgumentError.new("Array index out of bounds")
+        # end
+        if self[start_pos].nil? #remember to update empty space with nullpiece 
+            raise ArgumentError.new("No piece at starting position")
         end
+        if self[end_pos]!=nil
+            raise ArgumentError.new("Piece is already at a point")
+        end
+        self[end_pos] = self[start_pos]
+        self[start_pos] = nil      #will need to reset to nullpiece
     end
 end
