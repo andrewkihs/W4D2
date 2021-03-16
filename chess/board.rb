@@ -1,28 +1,34 @@
 require_relative "./piece.rb"
 class Board
-    def inititalize
-        # @color
+    attr_reader :rows
+    def self.populate_grid
         @rows = Array.new(8) {Array.new(8, "__")}
         (0...@rows.length).each do |row|
-            (0...@rows.length).each do |col|
-                pos = [row,col]
+            (0...@rows[0].length).each do |col|
+                # puts pos = [row, col]
                 if row < 2 || row >= 6
-                    @rows[pos] = Piece.new("test", @rows, pos)
+
+                    @rows[row][col] = Piece.new("test", 'test', [row,col])
                 else
-                    @rows[pos] = nil
+                    @rows[row][col] = nil
                 end
             end
         end
-        # @piece = Piece.new('TestName', @rows, ) #should be private null_piece
+        return @rows
+    end
+    
+    def initialize
+        @rows = self.class.populate_grid
+     
     end
 
     def [](pos)
-        row, col = pos
+        row, col = pos[0], pos[1]
         @rows[row][col]
     end
 
     def []=(pos, val)
-        row, col = pos
+        row, col = pos[0], pos[1]
         @rows[row][col] = val
     end
 
