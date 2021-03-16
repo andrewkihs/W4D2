@@ -1,10 +1,12 @@
 require_relative "./employee.rb"
 class Manager < Employee
-    def initialize
+    attr_accessor :employees
+    def initialize(name, title, salary, boss = nil)
         super
-        employees = [Employee.new('name1','Manager', 2000, "BossName")]
-
+        @employees = []
     end
+
+    
 
     def bonus(multiplier)
         emp_sum = 0
