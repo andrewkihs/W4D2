@@ -6,9 +6,9 @@ class Piece
     #     @pos = pos
     # end
     attr_reader :name, :board, :pos
-    def initialize(name)
+    def initialize(name,board ,pos)
         @name = name
         @board = board
-        @pos = [0,0]
+        @pos = pos
     end
 end
