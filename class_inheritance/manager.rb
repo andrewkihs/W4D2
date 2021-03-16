@@ -6,13 +6,16 @@ class Manager < Employee
         @employees = []
     end
 
-    
+    def add_employee(employee)
+        employee.boss = self.name    
+        self.employees << employee
+    end
 
     def bonus(multiplier)
         emp_sum = 0
         employees.each do |employee|
             emp_sum += employee.salary
         end
-        bonus = sum * multiplier
+        bonus = emp_sum * multiplier
     end
 end
