@@ -11,4 +11,9 @@ class Piece
         @board = board
         @pos = pos
     end
+
+    def moves
+        possible_moves = []
+
+    end
 end
