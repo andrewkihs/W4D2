@@ -4,7 +4,7 @@ require 'Singleton'
 class NullPiece < Piece
     include Singleton
     def initialize
-
+        
     end
 
     def moves
@@ -12,6 +12,6 @@ class NullPiece < Piece
     end
 
     def symbol
-
+        return "__"  #for now 
     end
 end
