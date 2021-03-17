@@ -6,9 +6,10 @@ class Board
         (0...@rows.length).each do |row|
             (0...@rows[0].length).each do |col|
                 # puts pos = [row, col]
-                if row < 2 || row >= 6
-
-                    @rows[row][col] = Piece.new("test", 'test', [row,col])
+                if row < 2 
+                    @rows[row][col] = Piece.new(:b, @rows, [row,col])
+                elsif row >= 6
+                    @rows[row][col] = Piece.new(:w, @rows, [row,col])
                 else
                     @rows[row][col] = nil
                 end
@@ -33,10 +34,10 @@ class Board
     end
 
     def move_piece(color = nil, start_pos, end_pos)
-        # if start_pos.any? {|int| int>7 || int<0}
+        # if end_pos.min >= 0 && end_pos.max <= 7
         #     raise ArgumentError.new("Array index out of bounds")
         # end
-        # if end_pos[0]>7 || end_pos[1]<0
+        # if start_pos.min >= 0 && start_pos.max <= 7
         #     raise ArgumentError.new("Array index out of bounds")
         # end
         if self[start_pos].nil? #remember to update empty space with nullpiece 
