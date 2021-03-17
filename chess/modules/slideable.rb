@@ -19,17 +19,16 @@ module Slideable
          # create array to collect moves
         possible_moves = []
         move_dirs.each do |dir|
-
+            possible_moves += grow_unblocked_moves_in_dir(dir[0],dir[1])
         end
         # iterate over each of the directions in which a slideable piece can move
         # use the Piece subclass' `#move_dirs` method to get this info
-        move_dirs #this is a bishop
         # for each direction, collect all possible moves in that direction
             # and add them to your moves array 
             # (use the `grow_unblocked_moves_in_dir` helper method)
 
         # return the final array of moves (containing all possible moves in all directions)
-
+        possible_moves
     end
 
     private
