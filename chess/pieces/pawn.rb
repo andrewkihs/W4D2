@@ -1,8 +1,8 @@
 require_relative '../piece.rb'
-
+require 'colorize'
 class Pawn < Piece
     def symbol
-        "♟︎".colorize(color)  
+        "♟︎"#.colorize("white")  
     end
 
     def moves
@@ -11,7 +11,7 @@ class Pawn < Piece
     
     private
     def at_start_row?
-        (pos[0]==1 && color == "b") || (pos[0] == 6 && color== "w")
+        (pos[0]==1 && color == ":black") || (pos[0] == 6 && color== ":white")
     end
 
     def forward_dir

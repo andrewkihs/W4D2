@@ -19,7 +19,7 @@ class Board
                 Knight.new(:w, @rows,[7,1]),
                 Bishop.new(:w, @rows,[7,2]),
                 Queen.new(:w, @rows,[7,3]),
-                King.new(:w, @rows, [7,4]),
+                King.new(:white, @rows, [7,4]),
                 Bishop.new(:w, @rows,[7,5]),
                 Knight.new(:w, @rows,[7,6]),
                 Rook.new(:w, @rows,[7,7])
@@ -29,11 +29,11 @@ class Board
                 # puts pos = [row, col]
                 @rows[0]= black_first  
                 if row == 1
-                    @rows[row][col]= Pawn.new(:b, @rows,[1,col])
+                    @rows[row][col]= Pawn.new(:black, @rows,[1,col])
                 end
                 @rows[7]= white_last 
                 if row == 6
-                    @rows[row][col]= Pawn.new(:w, @rows,[6,col])
+                    @rows[row][col]= Pawn.new(:white, @rows,[6,col])
                 end
                 if row > 1 && row < 6
                     @rows[row][col] = NullPiece.instance
